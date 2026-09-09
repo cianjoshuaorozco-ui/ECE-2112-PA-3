@@ -67,7 +67,7 @@ column
 ```
 <br>
 
-```print(cars.shape)``` prints a tuple that describes the dimensions (rows, columns) of the DataFrame ```cars```.
+```print(cars.shape)``` prints a tuple that describes the dimensions (rows, columns) of ```cars```.
 
 ```column = list(cars.columns)``` extracts the names of all the columns from the DataFrame ```cars``` and stores them in the list ```column```.
 
@@ -93,12 +93,90 @@ cars_6_to_10_c
 ```
 <br>
 
-```cars_6_to_10_c = cars_6_to_10.loc[:, ['Model', 'mpg', 'cyl', 'hp', 'gear']]``` uses ```.loc``` to extract columns with labels instead of numerical positions. ```:``` selects all the rows for the search, while the list specifies the column labels that need to be extracted. The extracted requested columns will be stored in ```cars_6_to_10_c```.
+```cars_6_to_10_c = cars_6_to_10.loc[:, ['Model', 'mpg', 'cyl', 'hp', 'gear']]``` uses ```.loc``` to extract columns with labels instead of numerical positions. ```:``` selects all the rows for the search, while the list ```['Model', 'mpg', 'cyl', 'hp', 'gear']``` specifies the column labels that need to be extracted. The extracted requested columns will be stored in ```cars_6_to_10_c```.
 
 ```cars_6_to_10_c``` displays the filtered DataFrame with only the selected columns.
 
+<br>
+<br>
+
 ## Problem B. Model Lookup
+
+Use Boolean indexing on the Model column to answer both requests
+
+__Objectives:__
+
+```
+a. Display the complete row for Toyota Corolla.
+
+b. For Pontiac Firebird, display only Model, mpg, hp, and wt.
+
+Store the two results in toyota and pontiac, respectively. Do not use a hard-coded row number to
+locate either model.
+
+```
+
+### a.
+```
+toyota = cars.loc[cars['Model']=='Toyota Corolla']
+toyota
+```
+
+<br>
+
+```toyota = cars.loc[cars['Model']=='Toyota Corolla']``` uses a boolean condition inside ```.loc``` to search for the row containing the model name "Toyota Corolla". The entire row is stored in ```toyota```.
+
+```toyota``` displays the row extracted by the previous line.
+
+<br>
+
+### b.
+```
+pontiac = cars.loc[cars['Model']=='Pontiac Firebird', ['Model', 'mpg', 'hp', 'wt']]
+pontiac
+```
+
+<br>
+
+```pontiac = cars.loc[cars['Model']=='Pontiac Firebird', ['Model', 'mpg', 'hp', 'wt']]``` uses a boolean condition inside ```.loc``` to search for the row containing the model name "Pontiac Firebird". The row found is then filtered to only store certain columns given in the next argument ```['Model', 'mpg', 'hp', 'wt']``` and is then stored in ```pontiac```.
+
+```pontiac``` displays the filtered row with the selected columns.
+
+<br>
+<br>
+
 ## Problem C. Multi-Model Subsetting
+
+__Objetives:__
+
+```
+Create a DataFrame named selected cars containing only the records for three models: Datsun 710,
+Lotus Europa, and Ferrari Dino.
+
+For these records, retain only Model, mpg, cyl, hp, and gear. Select the rows by their model values
+rather than by row numbers. Display selected cars and its shape.
+
+Required check: The final DataFrame must contain exactly three rows and five columns.
+```
+
+<br>
+<br>
+
+```
+selected_cars = cars.loc[(cars['Model']=='Datsun 710') | (cars['Model']=='Lotus Europa') | (cars['Model']=='Ferrari Dino'), ['Model', 'mpg', 'cyl', 'hp', 'gear']]
+display(selected_cars)
+
+print(selected_cars.shape)
+```
+
+<br>
+
+```selected_cars = cars.loc[(cars['Model']=='Datsun 710') | (cars['Model']=='Lotus Europa') | (cars['Model']=='Ferrari Dino'), ['Model', 'mpg', 'cyl', 'hp', 'gear']]``` uses boolean operator ```|``` (OR) inside ```.loc``` to search for rows containing the model names "Datsun 710", "Lotus Europa", and "Ferrari Dino". These rows are filtered to only store specific named columns which were given in the next argument ```['Model', 'mpg', 'cyl', 'hp', 'gear']```. The filtered rows with the selected columns are stored in ```selected_cars```.
+
+```display(selected_cars)``` displays the filtered rows.
+
+```print(selected_cars.shape)``` prints a tuple that describes the dimension (rows, columns) of ```selected_cars```.
+
 
 ## History
 * 2026, September 08: File Created.
