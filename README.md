@@ -1,6 +1,10 @@
 # ECE-2112-PA-3
 Cian Joshua Orozco | 2ECED
 
+This repository contains Programming Assignment 3 for course, ECE2112 (Advanced Computer Programming and Algorithms). This assignment covers three problems associated to module 3.
+
+<br>
+
 ## Instruction
 
 Use the same cars.csv dataset supplied for Experiment 3. Write the solutions in one Jupyter Notebook and import Pandas as pd. The dataset contains the Model column together with the vehicle
@@ -17,7 +21,6 @@ requested table or answer.
 
 * Display every requested result in an executed notebook cell.
 
-<br>
 <br>
 <br>
 
@@ -78,6 +81,9 @@ cars_6_to_10
 ```
 <br>
 
+```cars_6_to_10 = cars.iloc[5:10]``` uses ```.iloc``` to perform the extraction by using numerical position, extracting rows 6 to 10 by indices 5 to 9 (since index 10 is exclusive) and stores them in ```cars_6_to_10```.
+
+```cars_6_to_10``` displays the extracted rows 6 to 10.
 
 ### c.
 
@@ -87,9 +93,14 @@ cars_6_to_10_c
 ```
 <br>
 
+```cars_6_to_10_c = cars_6_to_10.loc[:, ['Model', 'mpg', 'cyl', 'hp', 'gear']]``` uses ```.loc``` to extract columns with labels instead of numerical positions. ```:``` selects all the rows for the search, while the list specifies the column labels that need to be extracted. The extracted requested columns will be stored in ```cars_6_to_10_c```.
+
+```cars_6_to_10_c``` displays the filtered DataFrame with only the selected columns.
+
 ## Problem B. Model Lookup
 ## Problem C. Multi-Model Subsetting
 
 ## History
 * 2026, September 08: File Created.
 * 2026, September 08: Objectives and details added for Problem A.
+* 2026, September 09: Objectives and details added for problem B and C.
